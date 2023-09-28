@@ -24,7 +24,10 @@ export default function DashBoard () {
         {error && <Alert variant='danger'>{error}</Alert>}
       <Card.Body className='d-flex align-items-center justify-content-center flex-column gap-2 w-100'>
         <h1 className='text-center '>Your Profile</h1>
-        <b>Email:</b> {user.email}
+       <div>
+       <b>Name:</b> {localStorage.getItem("user-name")}
+       </div>
+        <div><b>Email:</b> {user.email}</div>
         <Button type='button' onClick={handleLogout}>Logout</Button>
       </Card.Body>
     </Card>

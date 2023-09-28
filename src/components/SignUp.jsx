@@ -5,6 +5,7 @@ import { useAuth } from '../authContext'
 import { useNavigate } from 'react-router-dom'
 
 const SignUp = () => {
+  const nameRef = useRef()
   const emailRef = useRef()
   const passwordRef = useRef()
   const passwordConfirmRef = useRef()
@@ -35,6 +36,7 @@ const SignUp = () => {
     try {
       setError("")
       setLoading(true)
+      localStorage.setItem("user-name", nameRef.current.value)
       await signup(emailRef.current.value, passwordRef.current.value)
       // setSuccess('Successfully created you account')
       navigate('/login')
@@ -50,6 +52,15 @@ const SignUp = () => {
           <h1 className='text-center mb-4'>SignUp</h1>
           {error && <Alert variant='danger'>{error}</Alert>}
           <Form onSubmit={handleSubmit}>
+          <Form.Group>
+              <Form.Label htmlFor='name'>Your name</Form.Label>
+              <Form.Control
+                type='text'
+                placeholder='Type your name here'
+                ref={nameRef}
+                id='name'
+              />
+            </Form.Group>
             <Form.Group>
               <Form.Label htmlFor='email'>Your email</Form.Label>
               <Form.Control

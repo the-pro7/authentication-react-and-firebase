@@ -6,6 +6,7 @@ import AuthContextProvider from '../authContext'
 import { Route, Routes } from 'react-router-dom'
 import DashBoard from './Dashboard';
 import ProtectedRoute from '../protected-routes/ProtectedRoute';
+import Home from './Home';
 
 function App () {
   return (
@@ -13,6 +14,7 @@ function App () {
       <AuthContextProvider>
       <Container className='d-flex justify-content-center align-items-center mt-5'>
         <Routes>
+          <Route path='/' element={<Home />}/>
           <Route path='/dashboard' element={<ProtectedRoute >
             <DashBoard />
           </ProtectedRoute>}/>
